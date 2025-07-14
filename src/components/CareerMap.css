@@ -1,0 +1,65 @@
+.career-section {
+  background: #0a0a0a;
+  padding: 5rem 2rem;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.career-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  color: #a855f7;
+  text-shadow: 0 0 12px #a855f7;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  padding-left: 20px;
+  border-left: 2px solid #a855f7;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 30px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -11px;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  background-color: #a855f7;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #a855f74d;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px #a855f720;
+}
+
+.timeline-content h3 {
+  font-size: 1.4rem;
+  color: #a855f7;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  font-size: 0.95rem;
+  color: #ccc;
+}

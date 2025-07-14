@@ -1,0 +1,109 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  transition: padding 0.3s ease, background 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-shrink {
+  padding: 0.7rem 0; /* 🔽 Shrink effect */
+  background: rgba(21, 0, 32, 0.3); /* Slightly darker on scroll */
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-items li a {
+  color: #e0d0f5;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* 🔥 Active Link */
+.nav-items li a.active,
+.nav-items li a:hover {
+  color: #f472b6;
+}
+
+/* 🔥 Optional: underline animation */
+.nav-items li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #f472b6;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-items li a:hover::after,
+.nav-items li a.active::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-items {
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+}
+
+.nav-items li a {
+  color: #e0d0f5;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Active or hovered link glow */
+.nav-items li a.active,
+.nav-items li a:hover {
+  color: #f472b6;
+  text-shadow: 0 0 6px #f472b6, 0 0 12px #f472b6;
+}
+
+/* Glowing underline */
+.nav-items li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #f472b6;
+  left: 0;
+  bottom: -4px;
+  box-shadow: 0 0 8px #f472b6;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-items li a:hover::after,
+.nav-items li a.active::after {
+  width: 100%;
+}
