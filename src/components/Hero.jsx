@@ -1,7 +1,8 @@
 import React from 'react';
 import './Hero.css';
+import Tilt from 'react-parallax-tilt';
+import avatar from '../assets/avatar1.png';
 import { useToast } from '../context/ToastContext';
- import avatar from '../assets/avatar1.png'; // Optional: your image
 
 const Hero = () => {
   const { showToast } = useToast();
@@ -41,8 +42,9 @@ const Hero = () => {
       </div>
 
       <div className="hero-right">
-        {/* Optional Avatar */}
-         <img src={avatar} alt="avatar" className="hero-avatar" /> 
+        <Tilt tiltMaxAngleX={20} tiltMaxAngleY={20} perspective={1000} scale={1.05} transitionSpeed={400}>
+          <img src={avatar} alt="avatar" className="hero-avatar tilt-avatar" />
+        </Tilt>
       </div>
 
       <div className="scroll-down">↓</div>

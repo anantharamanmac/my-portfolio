@@ -179,3 +179,32 @@
     width: 220px;
   }
 }
+@keyframes shimmer {
+  0% {
+    background-position: -450px 0;
+  }
+  100% {
+    background-position: 450px 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+
+/* Animated Glass Button on Click */
+.glass-button.animate-download {
+  background: linear-gradient(135deg, #a855f7 0%, #6b21a8 50%, #a855f7 100%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s ease-in-out forwards, pulse 1s ease-out;
+  color: white;
+  border: none;
+}

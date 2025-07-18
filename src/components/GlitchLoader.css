@@ -11,15 +11,16 @@
 .glitch-container {
   text-align: center;
   backdrop-filter: blur(8px);
-  padding: 2rem 4rem;
-  border-radius: 16px;
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: scale(0.8);
 }
 
 .glitch-text {
   position: relative;
-  font-size: 6rem;
+  font-size: 4.5rem;
   font-weight: 900;
   color: #f0f0f0;
   animation: glitch 1s infinite;
@@ -48,18 +49,6 @@
   animation: glitchBottom 1s infinite;
 }
 
-.loading-text {
-  color: #ccc;
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-family: monospace;
-  animation: typing 3s steps(22), blink 1s step-end infinite;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #f0f0f0;
-}
-
-/* Glitch Animation */
 @keyframes glitch {
   0% { transform: none; }
   20% { transform: skew(-2deg); }
@@ -81,7 +70,55 @@
   100% { clip-path: inset(0 0 70% 0); }
 }
 
-/* Typewriter */
+.design-svg {
+  width: 100%;
+  max-width: 480px;
+  margin: 1rem auto;
+  display: block;
+}
+
+.draw-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: draw 2s ease-out forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.brush-stroke-container {
+  margin-top: 1rem;
+  height: 10px;
+  background: #ffffff22;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.brush-stroke {
+  height: 100%;
+  background: linear-gradient(90deg, #f472b6, #a855f7);
+  border-radius: 20px;
+  transition: width 0.3s ease-in-out;
+}
+
+.loading-text {
+  color: #ccc;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-family: monospace;
+  animation: typing 3s steps(22), blink 1s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #f0f0f0;
+  width: fit-content;
+  margin-inline: auto;
+}
+
 @keyframes typing {
   from { width: 0; }
   to { width: 20ch; }
