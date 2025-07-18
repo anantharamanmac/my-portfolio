@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
- import avatar from '../assets/avatar1.png'; // Replace with your avatar image
+import avatar from '../assets/avatar1.png';
+
+const skills = [
+  { name: 'Figma', percent: 70 },
+  { name: 'XD', percent: 100 },
+  { name: 'AI', percent: 100 },
+  { name: 'PS', percent: 100 },
+  { name: 'HTML', percent: 100 },
+  { name: 'CSS', percent: 100 },
+  { name: 'React', percent: 90 },
+];
 
 const About = () => {
+  const [visible, setVisible] = useState(false);
+  const progressRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (progressRef.current) {
+      observer.observe(progressRef.current);
+    }
+
+    return () => {
+      if (progressRef.current) {
+        observer.unobserve(progressRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section className="about-section" id="about">
       <div className="about-left">
         <div className="blob">
-           <img src={avatar} alt="Anantharaman Avatar" className="about-avatar" /> 
+          <img src={avatar} alt="Anantharaman Avatar" className="about-avatar" />
         </div>
       </div>
 
@@ -22,16 +54,24 @@ const About = () => {
           I'm driven by design, detail, and discovery.
         </p>
 
-        <div className="skills-container">
+        <div className="skills-container" ref={progressRef}>
           <h4>Skills</h4>
-          <div className="skill-badges">
-            <span className="badge">Figma</span>
-            <span className="badge">XD</span>
-            <span className="badge">AI</span>
-            <span className="badge">PS</span>
-            <span className="badge">HTML</span>
-            <span className="badge">CSS</span>
-            <span className="badge">React</span>
+          <div className="progress-badges">
+            {skills.map((skill, index) => (
+              <div key={index} className="progress-box">
+                <span>{skill.name}</span>
+                <div className="progress-bar">
+                  <div
+                    className={`progress-fill ${visible ? 'animate' : ''}`}
+                    style={{
+                      width: visible ? `${skill.percent}%` : '0%',
+                      animationDelay: `${index * 0.2}s`,
+                    }}
+                  ></div>
+                </div>
+                <span className="percent">{skill.percent}%</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
