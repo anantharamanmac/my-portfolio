@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [showToast, setShowToast] = useState(false);
@@ -8,8 +9,21 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
+    emailjs.sendForm(
+      'service_c9zsrvh',     // Replace with your EmailJS service ID
+      'template_2hzr4m7',    // Replace with your EmailJS template ID
+      e.target,
+      'p9rav256SNnLISAAM'         // Replace with your EmailJS user/public key
+    )
+    .then(() => {
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+      e.target.reset(); // Reset form after submission
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      alert('Something went wrong. Please try again.');
+    });
   };
 
   return (
@@ -27,16 +41,16 @@ const Contact = () => {
 
         <div className="contact-right">
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
       </div>
 
       {showToast && (
-        <div className="custom-toast glass">✅ Message submitted (fake)!</div>
+        <div className="custom-toast glass">✅ Message sent successfully!</div>
       )}
     </section>
   );
